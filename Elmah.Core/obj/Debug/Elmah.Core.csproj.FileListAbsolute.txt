@@ -1,0 +1,9 @@
+C:\Development\Elmah\Elmah.Core\bin\Debug\Elmah.Core.dll
+C:\Development\Elmah\Elmah.Core\bin\Debug\Elmah.Core.pdb
+C:\Development\Elmah\Elmah.Core\obj\Debug\Elmah.Core.csprojResolveAssemblyReference.cache
+C:\Development\Elmah\Elmah.Core\obj\Debug\Elmah.Core.dll
+C:\Development\Elmah\Elmah.Core\obj\Debug\Elmah.Core.pdb
+C:\Development\Elmah\Elmah.Core\bin\Debug\Mono.Security.dll
+C:\Development\Elmah\Elmah.Core\bin\Debug\mysql.data.dll
+C:\Development\Elmah\Elmah.Core\bin\Debug\Npgsql.dll
+C:\Development\Elmah\Elmah.Core\bin\Debug\System.Data.SQLite.DLL
