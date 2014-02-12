@@ -30,6 +30,12 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="FluentNHibernate">
+      <HintPath>..\packages\FluentNHibernate.1.4.0.0\lib\net35\FluentNHibernate.dll</HintPath>
+    </Reference>
+    <Reference Include="Iesi.Collections">
+      <HintPath>..\packages\Iesi.Collections.3.2.0.4000\lib\Net35\Iesi.Collections.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.JScript" />
     <Reference Include="Mono.Security">
       <HintPath>..\lib\Mono.Security.dll</HintPath>
@@ -37,6 +43,9 @@
     <Reference Include="mysql.data, Version=6.7.4.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\lib\mysql.data.dll</HintPath>
+    </Reference>
+    <Reference Include="NHibernate">
+      <HintPath>..\packages\NHibernate.3.3.3.4001\lib\Net35\NHibernate.dll</HintPath>
     </Reference>
     <Reference Include="Npgsql">
       <HintPath>..\lib\Npgsql.dll</HintPath>
@@ -138,8 +147,13 @@
     <Compile Include="JsonTextWriter.cs" />
     <Compile Include="ManifestResourceHandler.cs" />
     <Compile Include="ManifestResourceHelper.cs" />
+    <Compile Include="Mappings\ApplicationMap.cs" />
+    <Compile Include="Mappings\ErrorMap.cs" />
     <Compile Include="Mask.cs" />
     <Compile Include="MemoryErrorLog.cs" />
+    <Compile Include="Models\Application.cs" />
+    <Compile Include="Models\BaseModel.cs" />
+    <Compile Include="Models\Error.cs" />
     <Compile Include="MsAjaxDeltaErrorLogModule.cs" />
     <Compile Include="MySqlErrorLog.cs" />
     <Compile Include="OracleErrorLog.cs" />
@@ -154,6 +168,8 @@
     <Compile Include="SecuritySectionHandler.cs" />
     <Compile Include="ServiceCenter.cs" />
     <Compile Include="ServiceContainer.cs" />
+    <Compile Include="Services\Impl\DataService.cs" />
+    <Compile Include="Services\IDataService.cs" />
     <Compile Include="SimpleServiceProviderFactory.cs" />
     <Compile Include="SpeedBar.cs" />
     <Compile Include="SqlErrorLog.cs" />
@@ -167,6 +183,10 @@
     <Compile Include="XmlSerializer.cs" />
     <Compile Include="XmlText.cs" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
