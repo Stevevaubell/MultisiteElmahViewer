@@ -1,0 +1,66 @@
+﻿.bg-danger {
+    background-color: #fe402b !important;
+    color: #fff !important;
+}
+
+.bg-success {
+    background-color: #9ad268;
+    color: #fff;
+}
+
+.bg-warning {
+    background-color: #ffc545;
+    color: #fff;
+}
+
+.panel {
+    margin-bottom: 20px;
+    border: 1px solid transparent;
+    border-radius: 4px;
+    -webkit-box-shadow: 0 1px 1px rgba(0,0,0,.05);
+    box-shadow: 0 1px 1px rgba(0,0,0,.05);
+}
+
+.panel-body {
+    padding: 15px;
+}
+
+.panel-application {
+    text-align: center;
+    cursor: pointer;
+    overflow: hidden;
+}
+
+.panel.panel-default {
+    border-color: #f1f5fc;
+}
+
+.panel-default {
+    border-color: #ddd;
+}
+
+div {
+    display: block;
+}
+
+.panel-application .value {
+    font-size: 60px;
+    transition: all 0.4s ease;
+    -webkit-transition: all 0.4s ease;
+    -moz-transition: all 0.4s ease;
+    -ms-transition: all 0.4s ease;
+    -o-transition: all 0.4s ease;
+}
+
+.panel-application:hover .value {
+    transform: scale(1.2);
+    -webkit-transform: scale(1.2);
+    -moz-transform: scale(1.2);
+    -ms-transform: scale(1.2);
+    -o-transform: scale(1.2);
+    transition: all 0.4s ease;
+    -webkit-transition: all 0.4s ease;
+    -moz-transition: all 0.4s ease;
+    -ms-transition: all 0.4s ease;
+    -o-transition: all 0.4s ease;
+}
