@@ -9,7 +9,7 @@ namespace Elmah.Web.Controllers
 
         public ActionResult Index()
         {
-            return View(); //HomeBuilder.Build());
+            return View(HomeBuilder.Build());
         }
     }
 }

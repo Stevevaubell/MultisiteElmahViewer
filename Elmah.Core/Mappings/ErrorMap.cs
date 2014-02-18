@@ -16,7 +16,7 @@ namespace Elmah.Core.Mappings
             Map(x => x.Type);
             Map(x => x.Source);
             Map(x => x.Message);
-            Map(x => x.User);
+            Map(x => x.User).Column("[User]");
             Map(x => x.StatusCode);
             Map(x => x.TimeUtc);
             Map(x => x.Sequence);

@@ -1,17 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Configuration;
-using System.Linq;
-using System.Reflection;
-using System.Web;
-using System.Web.Http;
-using System.Web.Mvc;
-using System.Web.Routing;
-using Autofac;
+﻿using Autofac;
 using Autofac.Integration.Mvc;
 using Autofac.Integration.WebApi;
 using Elmah.Web.IOC;
-using Microsoft.AspNet.SignalR;
+using System.Configuration;
+using System.Reflection;
+using System.Web.Http;
+using System.Web.Mvc;
+using System.Web.Routing;
 
 namespace Elmah.Web
 {
@@ -43,8 +38,12 @@ namespace Elmah.Web
 
             var container = builder.Build();
 
-            var signalrResolver = new Autofac.Integration.SignalR.AutofacDependencyResolver(container);
-            GlobalHost.DependencyResolver = signalrResolver;
+            // Create the depenedency resolver.
+            var resolver = new AutofacWebApiDependencyResolver(container);
+
+            // Configure Web API with the dependency resolver.
+            GlobalConfiguration.Configuration.DependencyResolver = resolver;
+
 
             dependencyBuilder.AddDependencies(container, ConfigurationManager.ConnectionStrings["db"].ConnectionString);
             DependencyResolver.SetResolver(new AutofacDependencyResolver(container));

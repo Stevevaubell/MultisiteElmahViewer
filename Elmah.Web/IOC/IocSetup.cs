@@ -1,10 +1,7 @@
 ﻿using Autofac;
 using Autofac.Integration.Mvc;
-using Autofac.Integration.SignalR;
 using Autofac.Integration.WebApi;
 using Elmah.Core.Services.Impl;
-using Elmah.Web.Hubs;
-using Microsoft.AspNet.SignalR;
 using NHibernate;
 using System.Diagnostics.Contracts;
 using System.Reflection;
@@ -49,12 +46,6 @@ namespace Elmah.Web.IOC
                 .InstancePerApiRequest()
                 .AsImplementedInterfaces()
                 .PropertiesAutowired();
-
-            builder.Register(x => new ApplicationStateTicker())
-                .SingleInstance()
-                .PropertiesAutowired();
-            
-            builder.RegisterType<ApplicationStateHub>().ExternallyOwned();
             builder.Update(context);
         }
     }
