@@ -128,9 +128,10 @@
   <ItemGroup>
     <Compile Include="Builders\Api\IApplicationStateApiBuilder.cs" />
     <Compile Include="Builders\Api\Impl\ApplicationStateApiBuilder.cs" />
-    <Compile Include="Builders\IHomeBuilder.cs" />
-    <Compile Include="Builders\Impl\HomeBuilder.cs" />
+    <Compile Include="Builders\IErrorLogBuilder.cs" />
+    <Compile Include="Builders\Impl\ErrorLogBuilder.cs" />
     <Compile Include="Controllers\Api\ApplicationStateApiController.cs" />
+    <Compile Include="Controllers\ErrorLogController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -138,6 +139,7 @@
     <Compile Include="IOC\IocSetup.cs" />
     <Compile Include="IOC\SessionSetup.cs" />
     <Compile Include="Models\Api\ApplicationState.cs" />
+    <Compile Include="Models\ErrorLogViewModel.cs" />
     <Compile Include="Models\HomeViewData.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -509,6 +511,7 @@
     </Content>
     <Content Include="Views\Web.config" />
     <Content Include="Scripts\jquery-2.1.0.min.map" />
+    <Content Include="Views\ErrorLog\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

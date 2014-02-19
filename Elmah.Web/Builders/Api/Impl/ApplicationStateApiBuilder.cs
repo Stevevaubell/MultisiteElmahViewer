@@ -4,6 +4,7 @@ using Elmah.Core.Services;
 using Elmah.Web.Models.Api;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Linq.Expressions;
 
 namespace Elmah.Web.Builders.Api.Impl
@@ -25,7 +26,7 @@ namespace Elmah.Web.Builders.Api.Impl
             {
                 ApplicationState state = new ApplicationState();
                 state.Application = application.Name;
-                state.ErrorCount = new Random().Next(0, 100); //errors.Count(x => x.Application == application.Name);
+                state.ErrorCount = errors.Count(x => x.Application == application.Name);
                 states.Add(state);
             }
 

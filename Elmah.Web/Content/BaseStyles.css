@@ -10,12 +10,20 @@
     padding-left: 10px;
 }
 
-.logo .meta {
+    .logo .meta {
+        color: #888888;
+        line-height: 15px;
+        margin: 0;
+        padding-left: 10px;
+    }
+
+a.logo {
     color: #888888;
-    line-height: 15px;
-    margin: 0;
-    padding: 0;
 }
+
+    a.logo:hover, a.logo:focus {
+        text-decoration: none;
+    }
 
 .bold {
     font-weight: bold;
@@ -92,4 +100,36 @@ div {
     -moz-transition: all 0.4s ease;
     -ms-transition: all 0.4s ease;
     -o-transition: all 0.4s ease;
+}
+
+.result-page {
+    padding-left: 50px;
+}
+
+.result-table {
+    padding-left: 50px;
+    padding-right: 50px;
+    font-size: 12px !important;
+    padding-top: 10px;
+}
+
+.no-Results {
+    padding: 50px;
+}
+
+.result-header {
+    text-align: left;
+    background-color: #0A6CCE;
+    padding: 0.4em;
+    color: white;
+    border: solid 1px silver;
+    font-weight: bold;
+}
+.result-table .results-row {
+    border-left: solid 1px silver;
+}
+
+.result-table .results-row div {
+    border-right: solid 1px silver;
+    border-bottom: solid 1px silver;
 }

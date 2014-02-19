@@ -69,122 +69,14 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AboutPage.cs">
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="AccessErrorLog.cs" />
-    <Compile Include="ApplicationException.cs" />
-    <Compile Include="Assertions\AssertionFactory.cs" />
-    <Compile Include="Assertions\ComparisonAssertion.cs" />
-    <Compile Include="Assertions\ComparisonResults.cs" />
-    <Compile Include="Assertions\CompositeAssertion.cs" />
-    <Compile Include="Assertions\DataBinder.cs" />
-    <Compile Include="Assertions\DataBoundAssertion.cs" />
-    <Compile Include="Assertions\DelegatedContextExpression.cs" />
-    <Compile Include="Assertions\IAssertion.cs" />
-    <Compile Include="Assertions\IContextExpression.cs" />
-    <Compile Include="Assertions\IsNullAssertion.cs" />
-    <Compile Include="Assertions\JScriptAssertion.cs" />
-    <Compile Include="Assertions\LogicalAssertion.cs" />
-    <Compile Include="Assertions\RegexMatchAssertion.cs" />
-    <Compile Include="Assertions\StaticAssertion.cs" />
-    <Compile Include="Assertions\TypeAssertion.cs" />
-    <Compile Include="Assertions\UnaryNotAssertion.cs" />
-    <Compile Include="Assertions\WebDataBindingExpression.cs" />
-    <Compile Include="Build.cs" />
-    <Compile Include="CdoConfigurationFields.cs" />
-    <Compile Include="Configuration.cs" />
-    <Compile Include="ConfigurationSectionHelper.cs" />
-    <Compile Include="ConnectionStringHelper.cs" />
-    <Compile Include="Debug.cs" />
-    <Compile Include="Environment.cs" />
-    <Compile Include="Error.cs" />
-    <Compile Include="ErrorDetailPage.cs">
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="ErrorDigestRssHandler.cs" />
-    <Compile Include="ErrorDisplay.cs" />
-    <Compile Include="ErrorFilterConfiguration.cs" />
-    <Compile Include="ErrorFilterModule.cs" />
-    <Compile Include="ErrorFilterSectionHandler.cs" />
-    <Compile Include="ErrorHtmlPage.cs">
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="ErrorJson.cs" />
-    <Compile Include="ErrorJsonHandler.cs" />
-    <Compile Include="ErrorLog.cs" />
-    <Compile Include="ErrorLogDataSourceAdapter.cs" />
-    <Compile Include="ErrorLogDownloadHandler.cs" />
-    <Compile Include="ErrorLogEntry.cs" />
-    <Compile Include="ErrorLogModule.cs" />
-    <Compile Include="ErrorLogPage.cs">
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="ErrorLogPageFactory.cs" />
-    <Compile Include="ErrorLogSectionHandler.cs" />
-    <Compile Include="ErrorMailHtmlFormatter.cs" />
-    <Compile Include="ErrorMailModule.cs" />
-    <Compile Include="ErrorMailSectionHandler.cs" />
-    <Compile Include="ErrorPageBase.cs">
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="ErrorRssHandler.cs" />
-    <Compile Include="ErrorSignal.cs" />
-    <Compile Include="ErrorTextFormatter.cs" />
-    <Compile Include="ErrorTweetModule.cs" />
-    <Compile Include="ErrorTweetSectionHandler.cs" />
-    <Compile Include="ErrorXml.cs" />
-    <Compile Include="ErrorXmlHandler.cs" />
-    <Compile Include="ExceptionFiltering.cs" />
-    <Compile Include="FixIIS5xWildcardMappingModule.cs" />
-    <Compile Include="HtmlLinkType.cs" />
-    <Compile Include="HttpModuleBase.cs" />
-    <Compile Include="HttpModuleRegistry.cs" />
-    <Compile Include="HttpRequestSecurity.cs" />
-    <Compile Include="HttpStatus.cs" />
-    <Compile Include="InvariantStringArray.cs" />
-    <Compile Include="JetBrains.Annotations.cs" />
-    <Compile Include="JsonTextWriter.cs" />
-    <Compile Include="ManifestResourceHandler.cs" />
-    <Compile Include="ManifestResourceHelper.cs" />
     <Compile Include="Mappings\ApplicationMap.cs" />
     <Compile Include="Mappings\ErrorMap.cs" />
-    <Compile Include="Mask.cs" />
-    <Compile Include="MemoryErrorLog.cs" />
     <Compile Include="Models\Application.cs" />
     <Compile Include="Models\BaseModel.cs" />
     <Compile Include="Models\Error.cs" />
-    <Compile Include="MsAjaxDeltaErrorLogModule.cs" />
-    <Compile Include="MySqlErrorLog.cs" />
-    <Compile Include="OracleErrorLog.cs" />
-    <Compile Include="PgsqlErrorLog.cs" />
-    <Compile Include="PoweredBy.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="ReverseComparer.cs" />
-    <Compile Include="RichSiteSummary.cs" />
-    <Compile Include="SccAttribute.cs" />
-    <Compile Include="SccStamp.cs" />
-    <Compile Include="SecurityConfiguration.cs" />
-    <Compile Include="SecuritySectionHandler.cs" />
-    <Compile Include="ServiceCenter.cs" />
-    <Compile Include="ServiceContainer.cs" />
     <Compile Include="Services\Impl\DataService.cs" />
     <Compile Include="Services\IDataService.cs" />
-    <Compile Include="SimpleServiceProviderFactory.cs" />
-    <Compile Include="SpeedBar.cs" />
-    <Compile Include="SqlErrorLog.cs" />
-    <Compile Include="SQLiteErrorLog.cs" />
-    <Compile Include="SqlServerCompactErrorLog.cs" />
-    <Compile Include="StringFormatter.cs" />
-    <Compile Include="StringTranslation.cs" />
-    <Compile Include="SynchronousAsyncResult.cs" />
-    <Compile Include="TestException.cs" />
-    <Compile Include="XmlFileErrorLog.cs" />
-    <Compile Include="XmlSerializer.cs" />
-    <Compile Include="XmlText.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

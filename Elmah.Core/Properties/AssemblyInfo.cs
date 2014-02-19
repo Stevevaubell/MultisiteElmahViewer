@@ -11,9 +11,7 @@ using System.Runtime.InteropServices;
 
 [assembly: AssemblyVersion("1.2.14318.0")]
 [assembly: AssemblyFileVersion("1.2.14318.2000")]
-[assembly: AssemblyConfiguration(Elmah.Core.Build.Configuration)]
 
 [assembly: CLSCompliant(true)]
 [assembly: ComVisible(false)]
 
-[assembly: Elmah.Core.Scc("$Id: AssemblyInfo.cs 914 2011-12-18 20:01:36Z azizatif $")]

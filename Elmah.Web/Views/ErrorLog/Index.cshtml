@@ -1,0 +1,64 @@
+﻿@model Elmah.Web.Models.ErrorLogViewModel
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_LayoutPage.cshtml";
+}
+
+<h1 style="padding-left: 50px">@Model.ApplicationName</h1>
+
+@if (Model.Errors != null && Model.Errors.Count > 0)
+{
+    <div class="result-page">Page @Model.PageNumber of @Model.TotalPage</div>
+    <div class="result-table">
+        <div class="row result-header">
+            <div class="col-md-2">
+                Host
+            </div>
+            <div class="col-md-1">
+                Code
+            </div>
+            <div class="col-md-3">
+                Type
+            </div>
+            <div class="col-md-4">
+                Error
+            </div>
+            <div class="col-md-1">
+                User
+            </div>
+            <div class="col-md-1">
+                Date
+            </div>
+        </div>
+        @foreach (var error in Model.Errors)
+        {
+            <div class="row results-row">
+                <div class="col-md-2">
+                    @error.Host
+                </div>
+                <div class="col-md-1">
+                    @error.StatusCode
+                </div>
+                <div class="col-md-3" style="font-weight: bold;">
+                    @error.Type.Split('.').Last().ToString()
+                </div>
+                <div class="col-md-4">
+                    @error.Message.Substring(0, (error.Message.Length > 50 ? 50 : error.Message.Length))...
+                </div>
+                <div class="col-md-1">
+                    @error.User
+                </div>
+                <div class="col-md-1">
+                    @error.TimeUtc.ToShortDateString()
+                </div>
+            </div>
+        }
+    </div>
+}
+else
+{
+    <div class="no-Results">
+        No errors found
+    </div>
+}

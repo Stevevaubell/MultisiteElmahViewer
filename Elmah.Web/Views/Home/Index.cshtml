@@ -4,33 +4,21 @@
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_LayoutPage.cshtml";
 }
-
-<div class="container">
-    <div class="row">
-        <!-- Logo section -->
-        <div class="col-md-4">
-            <!-- Logo. -->
-            <div class="logo">
-                <h1>Application <span class="bold">Health</span></h1>
-                <p class="meta">Monitoring applications based on ELMAH</p>
-            </div>
-            <!-- Logo ends -->
-        </div>
-    </div>
-</div>
 <div class="grid" ng-model="state" ng-animate="'animate'" ng-app="HomeApp" ng-controller="HomeController">
     <div class="row">
-        <div ng-repeat="state in states" class="col-md-4 col-sm-4">
-            <div animate-on-change='state.Class' ng-model="state.Class" class="panel panel-default panel-application">
-                <div class="panel-body">
-                    <div class="value">{{ state.Application }}</div>
-                    <div class="title">
-                        <i class="fa fa-usd"></i>
-                        <span class="m-left-s">{{ state.ErrorCount }}</span>
+        <a ng-repeat="state in states" href='/ErrorLog/?application={{ state.Application }}&pageNumber=1'>
+            <div class="col-md-4 col-sm-4">
+                <div animate-on-change='state.Class' ng-model="state.Class" class="panel panel-default panel-application">
+                    <div class="panel-body">
+                        <div class="value">{{ state.Application }}</div>
+                        <div class="title">
+                            <i class="fa fa-usd"></i>
+                            <span class="m-left-s">{{ state.ErrorCount }} errors today</span>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
+        </a>
     </div>
 </div>
 
