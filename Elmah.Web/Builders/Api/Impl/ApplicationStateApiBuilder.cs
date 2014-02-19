@@ -17,8 +17,8 @@ namespace Elmah.Web.Builders.Api.Impl
         {
             IList<Application> list = DataService.GetAll<Application>();
 
-            Expression<Func<Error, bool>> func = x => x.TimeUtc <= new DateTime(DateTime.UtcNow.Year, DateTime.UtcNow.Month, DateTime.UtcNow.Day) &&
-                x.TimeUtc >= new DateTime(DateTime.UtcNow.Year, DateTime.UtcNow.Month, DateTime.UtcNow.Day, 23, 59, 59);
+            Expression<Func<Error, bool>> func = x => x.TimeUtc >= new DateTime(DateTime.UtcNow.Year, DateTime.UtcNow.Month, DateTime.UtcNow.Day) &&
+                x.TimeUtc <= new DateTime(DateTime.UtcNow.Year, DateTime.UtcNow.Month, DateTime.UtcNow.Day, 23, 59, 59);
             IList<Error> errors = DataService.Find(func);
 
             IList<ApplicationState> states = new List<ApplicationState>();
