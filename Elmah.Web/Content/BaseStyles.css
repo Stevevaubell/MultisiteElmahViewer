@@ -1,4 +1,28 @@
-﻿.bg-danger {
+﻿h1, h2, h3, h4, h5, h6 {
+    color: #777777;
+    margin: 2px 0;
+    padding: 2px 0;
+}
+
+.logo {
+    margin-bottom: 50px;
+    margin-top: 0;
+    padding-left: 10px;
+}
+
+.logo .meta {
+    color: #888888;
+    line-height: 15px;
+    margin: 0;
+    padding: 0;
+}
+
+.bold {
+    font-weight: bold;
+    color: #fe402b;
+}
+
+.bg-danger {
     background-color: #fe402b !important;
     color: #fff !important;
 }
@@ -11,6 +35,11 @@
 .bg-warning {
     background-color: #ffc545;
     color: #fff;
+}
+
+.grid {
+    padding-left: 50px;
+    padding-right: 50px;
 }
 
 .panel {
