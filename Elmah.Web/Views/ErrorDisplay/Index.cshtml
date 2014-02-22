@@ -1,0 +1,26 @@
+﻿@model Elmah.Web.Models.ErrorDisplayViewModel
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_LayoutPage.cshtml";
+}
+
+<div class="container">
+    <a href="/ErrorLog/?application=@Model.Error.Application&pageNumber=1">Go Back</a>
+</div>
+
+<div class="container">
+    <p id="ErrorTitle">
+        <span id="ErrorType">@Model.Error.Type</span>
+        <span id="ErrorTypeMessageSeparator">:</span>
+        <span id="ErrorMessage">@Model.Error.Message</span>
+    </p>
+
+    <pre id="ErrorDetail">
+        @Model.OriginalError.Detail.TrimStart()
+    </pre>
+    <p id="ErrorLogTime">
+        Logged on @Model.Error.TimeUtc
+    </p>
+    @Html.Partial("ServerVariables")
+</div>

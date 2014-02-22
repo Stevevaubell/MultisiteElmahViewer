@@ -111,6 +111,7 @@ div {
     padding-right: 50px;
     font-size: 12px !important;
     padding-top: 10px;
+    padding-bottom: 10px;
 }
 
 .no-Results {
@@ -125,11 +126,110 @@ div {
     border: solid 1px silver;
     font-weight: bold;
 }
+
 .result-table .results-row {
     border-left: solid 1px silver;
 }
 
-.result-table .results-row div {
-    border-right: solid 1px silver;
-    border-bottom: solid 1px silver;
+    .result-table .results-row div {
+        border-right: solid 1px silver;
+        border-bottom: solid 1px silver;
+    }
+
+
+/*ERROR DISPLAY STYLES BASED ON ELMAH */
+table {
+    border-collapse: collapse;
+    width: 100%;
+}
+
+td {
+    border: 1px solid #C0C0C0;
+    padding: 0.4em;
+    vertical-align: top;
+}
+
+th {
+    background-color: #0A6CCE;
+    border: 1px solid #C0C0C0;
+    color: #FFFFFF;
+    padding: 0.4em;
+    text-align: left;
+    vertical-align: top;
+}
+
+.odd-row {
+    background-color: #E9E9E9;
+}
+
+.type-col {
+    font-weight: bold;
+}
+
+.code-col, .date-col, .time-col {
+    text-align: right;
+}
+
+#ErrorDetail {
+    background-color: #FFFFCC;
+    padding: 1em;
+    width: 100%;
+}
+
+.st-type, .st-param-type {
+    color: #00008B;
+}
+
+.st-param-name {
+    color: #666666;
+}
+
+.st-method {
+    color: #008B8B;
+    font-weight: bolder;
+}
+
+.st-file, .st-line {
+    color: #8B008B;
+}
+
+@media screen {
+    #ErrorDetail {
+        overflow: scroll;
+    }
+}
+
+#ErrorTitle {
+    font-size: 120%;
+    font-weight: bold;
+}
+
+#ErrorType, #ErrorMessage {
+    display: block;
+}
+
+#ErrorTypeMessageSeparator {
+    display: none;
+}
+
+.key-col {
+    font-weight: bold;
+}
+
+.table-caption {
+    background-color: #000080;
+    color: #FFFFFF;
+    font-weight: bold;
+    margin: 0;
+    padding: 0.4em;
+}
+
+.scroll-view {
+    overflow: scroll;
+    width: 100%;
+}
+
+table {
+    border-collapse: collapse;
+    width: 100%;
 }

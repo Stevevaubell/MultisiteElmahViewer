@@ -9,7 +9,23 @@
 
 @if (Model.Errors != null && Model.Errors.Count > 0)
 {
-    <div class="result-page">Page @Model.PageNumber of @Model.TotalPage</div>
+    if (Model.TotalPage > 1)
+    {
+        <div class="container">
+            Choose page: 
+            @for (int i = 1; i < Model.TotalPage + 1; i++)
+            {
+                if (i == Model.PageNumber)
+                {
+                    <span>@i</span>
+                }
+                else
+                {
+                    <a href="/ErrorLog/?application=@Model.ApplicationName&pageNumber=@i">@i</a>
+                }
+            }
+        </div>
+    }
     <div class="result-table">
         <div class="row result-header">
             <div class="col-md-1">
@@ -44,7 +60,7 @@
                     @error.Type.Split('.').Last().ToString()
                 </div>
                 <div class="col-md-4">
-                    @error.Message.Substring(0, (error.Message.Length > 50 ? 50 : error.Message.Length))... <a data-toggle="tooltip" data-placement="top" title="Comming soon" class="commingsoon" href="#">details</a>
+                    @error.Message.Substring(0, (error.Message.Length > 50 ? 50 : error.Message.Length))... <a href="/ErrorDisplay/?errorId=@error.ErrorId">details</a>
                 </div>
                 <div class="col-md-1">
                     @error.User
@@ -62,8 +78,3 @@ else
         No errors found
     </div>
 }
-<script type="text/javascript">
-    $(document).ready(function() {
-        $('.commingsoon').tooltip();
-    });
-</script>

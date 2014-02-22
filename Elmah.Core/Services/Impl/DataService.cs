@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
+using NHibernate.Criterion;
 
 namespace Elmah.Core.Services.Impl
 {
@@ -32,11 +33,33 @@ namespace Elmah.Core.Services.Impl
             return _session.QueryOver<T>().Where(expression).List<T>();
         }
 
+        public SearchResult<T> Find<T>(SearchCriteria<T> criteria) where T : BaseModel
+        {
+            var query = _session.QueryOver<T>()
+                .Where(criteria.Expression);
+
+            if (criteria != null && criteria.Expression != null)
+                query.Where(criteria.Expression);
+
+            if (criteria != null && criteria.OrderBy != null)
+                query.UnderlyingCriteria.AddOrder(Order.Desc(criteria.OrderBy));
+            
+            IList<T> results = query.Skip(criteria.PageNumber * criteria.ResultsPerPage)
+            .Take(criteria.ResultsPerPage)
+            .List<T>();
+
+            SearchResult<T> result = new SearchResult<T>();
+            result.ResultsList = results;
+            result.TotalResults = _session.QueryOver<T>().Where(criteria.Expression).RowCount();
+
+            return result;
+        }
+
         public void Delete<T>(Guid id) where T : BaseModel
         {
             T model = _session.QueryOver<T>().Where(x => x.ErrorId == id).SingleOrDefault();
-                _session.Delete(model);
-            
+            _session.Delete(model);
+
 
             _session.Flush();
         }

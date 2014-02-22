@@ -1,0 +1,31 @@
+﻿@model Elmah.Web.Models.ErrorDisplayViewModel
+
+@if (Model.OriginalError.ServerVariables != null && Model.OriginalError.ServerVariables.Count > 0)
+{
+    var isEven = false;
+    <div id="ServerVariables">
+        <p class="table-caption">Server Variables</p>
+
+        <div class="scroll-view">
+            <table cellspacing="0" style="border-collapse:collapse;">
+                <tbody>
+                <tr>
+                    <th class="name-col" style="white-space:nowrap;">Name</th>
+
+                    <th class="value-col" style="white-space:nowrap;">Value</th>
+                </tr>
+                    @foreach (var key in Model.OriginalError.ServerVariables.AllKeys)
+                    {
+                        var rowCss = isEven ? "even-row" : "odd-row";
+                        <tr class="@rowCss">
+                        <td class="key-col">@key</td>
+
+                            <td class="value-col">
+                                @Model.OriginalError.ServerVariables[key]
+                            </td>
+                    </tr>
+                    }
+            </table>
+        </div>
+    </div>
+}

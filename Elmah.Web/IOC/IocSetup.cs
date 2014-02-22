@@ -46,6 +46,13 @@ namespace Elmah.Web.IOC
                 .InstancePerApiRequest()
                 .AsImplementedInterfaces()
                 .PropertiesAutowired();
+
+            builder.RegisterAssemblyTypes(assembly)
+                .Where(t => t.Name.EndsWith("Helper"))
+                .InstancePerApiRequest()
+                .AsImplementedInterfaces()
+                .PropertiesAutowired();
+
             builder.Update(context);
         }
     }

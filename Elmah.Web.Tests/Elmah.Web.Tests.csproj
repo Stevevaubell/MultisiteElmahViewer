@@ -107,7 +107,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Builders\Api\ApplicationStateApiBuilderTests.cs" />
+    <Compile Include="Builders\ErrorDisplayBuilderTests.cs" />
     <Compile Include="Builders\ErrorLogBuilderTests.cs" />
+    <Compile Include="Controllers\ErrorDisplayControllerTests.cs" />
     <Compile Include="Controllers\ErrorLogControllerTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

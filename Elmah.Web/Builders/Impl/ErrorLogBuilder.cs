@@ -3,14 +3,14 @@ using Elmah.Core.Models;
 using Elmah.Core.Services;
 using Elmah.Web.Models;
 using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Linq.Expressions;
 
 namespace Elmah.Web.Builders.Impl
 {
     public class ErrorLogBuilder : IErrorLogBuilder
     {
+        public const int ResultsPerPage = 50;
+
         public IDataService DataService { get; set; }
 
         public ErrorLogViewModel Build(string applicationName, int pageNumber)
@@ -18,11 +18,19 @@ namespace Elmah.Web.Builders.Impl
             ErrorLogViewModel model = new ErrorLogViewModel();
 
             Expression<Func<Error, bool>> func = x => x.Application == applicationName;
-            IList<Error> errors = DataService.Find(func);
-            model.Errors = errors.Skip((pageNumber - 1) * 50).Take(50).ToList();
+            SearchCriteria<Error> criteria = new SearchCriteria<Error>();
+            criteria.OrderBy = "TimeUtc";
+            criteria.ResultsPerPage = ResultsPerPage;
+            criteria.PageNumber = pageNumber - 1;
+            criteria.Expression = func;
+
+            SearchResult<Error> result = DataService.Find<Error>(criteria);
+            model.Errors = result.ResultsList;
             model.ApplicationName = applicationName;
             model.PageNumber = pageNumber;
-            model.TotalPage = (int)Math.Ceiling(errors.Count / (double)50) + 1; ;
+            model.TotalPage = result.TotalResults > ResultsPerPage 
+                ? (int)Math.Ceiling(result.TotalResults / (double)ResultsPerPage)
+                : 1;
             return model;
         }
     }
