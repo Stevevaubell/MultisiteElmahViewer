@@ -4,7 +4,7 @@ using FluentNHibernate.Cfg.Db;
 using NHibernate;
 using NHibernate.Tool.hbm2ddl;
 
-namespace Elmah.Web.IOC
+namespace Elmah.Core.Util
 {
     public class SessionSetup
     {

@@ -180,7 +180,6 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="IOC\IocSetup.cs" />
-    <Compile Include="IOC\SessionSetup.cs" />
     <Compile Include="Models\Api\ApplicationState.cs" />
     <Compile Include="Models\ErrorDisplayViewModel.cs" />
     <Compile Include="Models\ErrorLogViewModel.cs" />

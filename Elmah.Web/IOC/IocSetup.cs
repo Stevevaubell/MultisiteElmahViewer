@@ -2,6 +2,7 @@
 using Autofac.Integration.Mvc;
 using Autofac.Integration.WebApi;
 using Elmah.Core.Services.Impl;
+using Elmah.Core.Util;
 using NHibernate;
 using System.Diagnostics.Contracts;
 using System.Reflection;
