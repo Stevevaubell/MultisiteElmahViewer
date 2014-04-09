@@ -24,6 +24,11 @@ namespace Elmah.Service.IOC
                 .AsImplementedInterfaces()
                 .PropertiesAutowired();
 
+            builder.RegisterAssemblyTypes(serviceAssembly)
+                .Where(t => t.Name.EndsWith("Helper"))
+                .AsImplementedInterfaces()
+                .PropertiesAutowired();
+
             var assembly = Assembly.GetExecutingAssembly();
             builder.RegisterAssemblyTypes(assembly)
                 .Where(t => t.Name.EndsWith("Helper"))

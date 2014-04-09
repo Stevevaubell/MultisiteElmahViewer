@@ -19,7 +19,7 @@ namespace Elmah.Core.Services.Impl
 
         public T Get<T>(Guid id) where T : BaseModel
         {
-            return _session.QueryOver<T>().Where(x => x.ErrorId == id).List().FirstOrDefault();
+            return _session.QueryOver<T>().Where(x => x.Id == id).List().FirstOrDefault();
         }
 
         public IList<T> GetAll<T>() where T : BaseModel
@@ -43,7 +43,7 @@ namespace Elmah.Core.Services.Impl
 
             if (criteria != null && criteria.OrderBy != null)
                 query.UnderlyingCriteria.AddOrder(Order.Desc(criteria.OrderBy));
-            
+
             IList<T> results = query.Skip(criteria.PageNumber * criteria.ResultsPerPage)
             .Take(criteria.ResultsPerPage)
             .List<T>();
@@ -57,11 +57,21 @@ namespace Elmah.Core.Services.Impl
 
         public void Delete<T>(Guid id) where T : BaseModel
         {
-            T model = _session.QueryOver<T>().Where(x => x.ErrorId == id).SingleOrDefault();
+            T model = _session.QueryOver<T>().Where(x => x.Id == id).SingleOrDefault();
             _session.Delete(model);
 
 
             _session.Flush();
+        }
+
+        public void Save<T>(T model) where T : BaseModel
+        {
+            using (var tx = _session.BeginTransaction())
+            {
+                _session.SaveOrUpdate(model);
+                tx.Commit();
+                _session.Flush();
+            }
         }
     }
 }

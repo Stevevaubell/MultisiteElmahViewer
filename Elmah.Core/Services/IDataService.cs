@@ -13,5 +13,6 @@ namespace Elmah.Core.Services
         IList<T> Find<T>(Expression<Func<T, bool>> expression) where T : BaseModel;
         SearchResult<T> Find<T>(SearchCriteria<T> criteria) where T : BaseModel;
         void Delete<T>(Guid id) where T : BaseModel;
+        void Save<T>(T model) where T : BaseModel;
     }
 }

@@ -73,6 +73,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Mappings\ApplicationMap.cs" />
+    <Compile Include="Mappings\ElmahSettingsMap.cs" />
     <Compile Include="Mappings\ErrorMap.cs" />
     <Compile Include="Models\Application.cs" />
     <Compile Include="Models\BaseModel.cs" />
@@ -83,6 +84,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\Impl\DataService.cs" />
     <Compile Include="Services\IDataService.cs" />
+    <Compile Include="Util\ApplicationSettings.cs" />
+    <Compile Include="Util\IAppSettingsHelper.cs" />
+    <Compile Include="Util\Impl\AppSettingsHelper.cs" />
     <Compile Include="Util\SessionSetup.cs" />
   </ItemGroup>
   <ItemGroup>

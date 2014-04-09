@@ -1,9 +1,9 @@
 ﻿
 using Elmah.Core.Models;
 using Elmah.Core.Services;
+using Elmah.Core.Util;
 using System;
 using System.Collections.Generic;
-using System.IO;
 using System.Linq;
 using System.Linq.Expressions;
 
@@ -12,26 +12,38 @@ namespace Elmah.Service.Tasks.Impl
     public class CleanUpTask : ICleanUpTask
     {
         public IDataService DataService { get; set; }
+        public IAppSettingsHelper AppSettingsHelper { get; set; }
 
         public void RunTask()
         {
             IList<ElmahSettings> settings = DataService.GetAll<ElmahSettings>();
+            IList<Application> applications = DataService.GetAll<Application>();
 
-            if (settings == null || settings.Count == 0)
-                throw new InvalidDataException("No settings for application");
-
-            Expression<Func<Core.Models.Error, bool>> func =
-                x =>
-                    x.TimeUtc <=
-                    new DateTime(DateTime.UtcNow.Year, DateTime.UtcNow.Month, DateTime.UtcNow.Day).AddDays(-1 *
-                                                                                                           settings
-                                                                                                           .FirstOrDefault()
-                                                                                                               .LengthToKeepResults);
-            IList<Core.Models.Error> errors = DataService.Find(func);
-
-            foreach (var error in errors)
+            foreach (Application application in applications)
             {
-                DataService.Delete<Core.Models.Error>(error.ErrorId);
+                var setting = settings.FirstOrDefault(x => x.Application.Id == application.Id);
+
+                if (setting == null)
+                {
+                    setting = new ElmahSettings();
+                    setting.Application = application;
+                    setting.LengthToKeepResults =
+                        AppSettingsHelper.GetIntConfig(ApplicationSettings.DefaultLengthToKeepResults);
+                    DataService.Save(setting);
+                }
+
+                Expression<Func<Core.Models.Error, bool>> func =
+                    x =>
+                        x.TimeUtc <=
+                        new DateTime(DateTime.UtcNow.Year,
+                            DateTime.UtcNow.Month,
+                            DateTime.UtcNow.Day).AddDays(-1 * setting.LengthToKeepResults);
+                IList<Core.Models.Error> errors = DataService.Find(func);
+
+                foreach (var error in errors)
+                {
+                    DataService.Delete<Core.Models.Error>(error.Id);
+                }
             }
         }
     }

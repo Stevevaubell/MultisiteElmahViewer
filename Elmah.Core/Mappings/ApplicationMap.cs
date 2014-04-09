@@ -9,7 +9,7 @@ namespace Elmah.Core.Mappings
         {
             Table("Application");
 
-            Id(x => x.ErrorId);
+            Id(x => x.Id).Column("ErrorId");
             Map(x => x.Name);
         }
     }

@@ -19,7 +19,7 @@ namespace Elmah.Web.Builders.Impl
         {
             ErrorDisplayViewModel model = new ErrorDisplayViewModel();
 
-            Expression<Func<Error, bool>> func = x => x.ErrorId == new Guid(errorId);
+            Expression<Func<Error, bool>> func = x => x.Id == new Guid(errorId);
             SearchCriteria<Error> criteria = new SearchCriteria<Error>();
             criteria.OrderBy = "TimeUtc";
             criteria.ResultsPerPage = ResultsPerPage;
