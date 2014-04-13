@@ -37,10 +37,10 @@
             <div class="col-md-3">
                 Type
             </div>
-            <div class="col-md-4">
+            <div class="col-md-3">
                 Error
             </div>
-            <div class="col-md-1">
+            <div class="col-md-2">
                 User
             </div>
             <div class="col-md-2">
@@ -49,6 +49,7 @@
         </div>
         @foreach (var error in Model.Errors)
         {
+            var userName = error.User.Length > 20 ? error.User.Substring(0, 20) : error.User;
             <div class="row results-row">
                 <div class="col-md-1">
                     @error.Host
@@ -59,11 +60,11 @@
                 <div class="col-md-3" style="font-weight: bold;">
                     @error.Type.Split('.').Last().ToString()
                 </div>
-                <div class="col-md-4">
-                    @error.Message.Substring(0, (error.Message.Length > 50 ? 50 : error.Message.Length))... <a href="/ErrorDisplay/?errorId=@error.ErrorId">details</a>
+                <div class="col-md-3">
+                    @error.Message.Substring(0, (error.Message.Length > 50 ? 50 : error.Message.Length))... <a href="/ErrorDisplay/?errorId=@error.Id">details</a>
                 </div>
-                <div class="col-md-1">
-                    @error.User
+                <div class="col-md-2">
+                    @userName
                 </div>
                 <div class="col-md-2">
                     @error.TimeUtc

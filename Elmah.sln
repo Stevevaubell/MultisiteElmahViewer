@@ -13,6 +13,11 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Elmah.Service", "Elmah.Serv
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Elmah.Service.Tests", "Elmah.Service.Tests\Elmah.Service.Tests.csproj", "{893E937C-1793-40E1-B6EF-331C00ACF760}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Build", "Build", "{A2B3977D-BD91-4A0D-B315-96DD96179066}"
+	ProjectSection(SolutionItems) = preProject
+		DeployService.xml = DeployService.xml
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
