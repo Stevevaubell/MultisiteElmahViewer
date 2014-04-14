@@ -35,6 +35,11 @@ namespace Elmah.Service.IOC
                 .AsImplementedInterfaces()
                 .PropertiesAutowired();
 
+            builder.RegisterAssemblyTypes(assembly)
+                .Where(t => t.Name.EndsWith("Task"))
+                .AsImplementedInterfaces()
+                .PropertiesAutowired();
+
 
             builder.RegisterType<Service>();
 

@@ -9,7 +9,7 @@ namespace Elmah.Core.Mappings
         {
             Table("Application");
 
-            Id(x => x.Id).Column("Id");
+            Id(x => x.Id);
             References(x => x.Application).Column("ApplicationId");
             Map(x => x.LengthToKeepResults);
         }

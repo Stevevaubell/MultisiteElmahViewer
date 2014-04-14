@@ -37,7 +37,7 @@
             // 
             // Service
             // 
-            this.ServiceName = "Service1";
+            this.ServiceName = "Elmah Health Service";
 
         }
 

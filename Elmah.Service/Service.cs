@@ -1,4 +1,5 @@
-﻿using Elmah.Service.Util;
+﻿using Elmah.Service.Tasks;
+using Elmah.Service.Util;
 using System;
 using System.ServiceProcess;
 
@@ -7,6 +8,8 @@ namespace Elmah.Service
     public partial class Service : ServiceBase
     {
         public IErrorHelper ErrorHelper { get; set; }
+        public ICleanUpTask CleanUpTask { get; set; }
+        public IFindApplicationsTask FindApplicationsTask { get; set; }
 
         public Service()
         {
@@ -21,11 +24,12 @@ namespace Elmah.Service
         {
         }
 
-        private void timer_Tick(object sender, System.EventArgs e)
+        public void timer_Tick(object sender, System.EventArgs e)
         {
             try
             {
-                //Do stuff here!
+                FindApplicationsTask.RunTask();
+                CleanUpTask.RunTask();
             }
             catch (Exception error)
             {

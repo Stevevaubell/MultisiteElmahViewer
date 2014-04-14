@@ -26,52 +26,52 @@
             }
         </div>
     }
-    <div class="result-table">
-        <div class="row result-header">
-            <div class="col-md-1">
+    <table class="result-table">
+        <tr class="row result-header">
+            <th>
                 Host
-            </div>
-            <div class="col-md-1">
+            </th>
+            <th>
                 Code
-            </div>
-            <div class="col-md-3">
+            </th>
+            <th>
                 Type
-            </div>
-            <div class="col-md-3">
+            </th>
+            <th>
                 Error
-            </div>
-            <div class="col-md-2">
+            </th>
+            <th>
                 User
-            </div>
-            <div class="col-md-2">
+            </th>
+            <th>
                 Date
-            </div>
-        </div>
+            </th>
+        </tr>
         @foreach (var error in Model.Errors)
         {
             var userName = error.User.Length > 20 ? error.User.Substring(0, 20) : error.User;
-            <div class="row results-row">
-                <div class="col-md-1">
+            <tr class="row results-row">
+                <td>
                     @error.Host
-                </div>
-                <div class="col-md-1">
+                </td>
+                <td>
                     @error.StatusCode
-                </div>
-                <div class="col-md-3" style="font-weight: bold;">
+                </td>
+                <td style="font-weight: bold;">
                     @error.Type.Split('.').Last().ToString()
-                </div>
-                <div class="col-md-3">
+                </td>
+                <td>
                     @error.Message.Substring(0, (error.Message.Length > 50 ? 50 : error.Message.Length))... <a href="/ErrorDisplay/?errorId=@error.Id">details</a>
-                </div>
-                <div class="col-md-2">
+                </td>
+                <td>
                     @userName
-                </div>
-                <div class="col-md-2">
+                </td>
+                <td>
                     @error.TimeUtc
-                </div>
-            </div>
+                </td>
+            </tr>
         }
-    </div>
+    </table>
 }
 else
 {

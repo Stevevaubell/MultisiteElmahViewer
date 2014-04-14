@@ -112,6 +112,8 @@ div {
     font-size: 12px !important;
     padding-top: 10px;
     padding-bottom: 10px;
+    width: 95%;
+    margin-left: 50px;
 }
 
 .no-Results {

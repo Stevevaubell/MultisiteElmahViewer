@@ -1,10 +1,10 @@
 ﻿using Elmah.Core.Models;
 using NHibernate;
+using NHibernate.Criterion;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
-using NHibernate.Criterion;
 
 namespace Elmah.Core.Services.Impl
 {
@@ -55,12 +55,23 @@ namespace Elmah.Core.Services.Impl
             return result;
         }
 
+        public IList<T> FindDistinct<T>(string columnName) where T : BaseModel
+        {
+            ICriteria criteria = _session.CreateCriteria(typeof(T));
+            criteria.SetProjection(
+                Projections.Distinct(Projections.ProjectionList()
+                    .Add(Projections.Alias(Projections.Property(columnName), columnName))));
+
+            criteria.SetResultTransformer(
+                new NHibernate.Transform.AliasToBeanResultTransformer(typeof(T)));
+
+            return criteria.List<T>();
+        }
+
         public void Delete<T>(Guid id) where T : BaseModel
         {
             T model = _session.QueryOver<T>().Where(x => x.Id == id).SingleOrDefault();
             _session.Delete(model);
-
-
             _session.Flush();
         }
 
