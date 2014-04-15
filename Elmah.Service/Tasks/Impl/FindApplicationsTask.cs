@@ -21,7 +21,7 @@ namespace Elmah.Service.Tasks.Impl
 
             var result = distinctApplication.Where(er => !applications.Any(app => er.Application == app.Name));
 
-            foreach (var notFound in result)
+            foreach (var notFound in result.Where(x => !string.IsNullOrEmpty(x.Application)))
             {
                 Application application = new Application();
                 application.Name = notFound.Application;

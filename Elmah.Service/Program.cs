@@ -14,29 +14,28 @@ namespace Elmah.Service
         /// </summary>
         static void Main()
         {
-            try
-            {
-                IocSetup setup = new IocSetup();
-                var builder = new ContainerBuilder();
-                var connectionString = ConfigurationManager.ConnectionStrings["db"].ConnectionString;
-                setup.AddDependencies(builder.Build(), connectionString);
-            }
-            catch (Exception error)
-            {
-                var errorLog =
-                new SqlErrorLog(System.Configuration.ConfigurationManager.ConnectionStrings["db"].ConnectionString)
-                {
-                    ApplicationName = "Application Health Service"
-                };
-                errorLog.Log(new Error(error));
-            }
+            IocSetup setup = new IocSetup();
+            var connectionString = ConfigurationManager.ConnectionStrings["db"].ConnectionString;
+            var builder = setup.AddDependencies(connectionString);
 
-            ServiceBase[] ServicesToRun;
-            ServicesToRun = new ServiceBase[] 
-            { 
-                new Service() 
-            };
-            ServiceBase.Run(ServicesToRun);
+            using (var container = builder.Build())
+            {
+                if (!Environment.UserInteractive)
+                {
+                    ServiceBase[] ServicesToRun;
+                    ServicesToRun = new ServiceBase[]
+                        {
+                            container.Resolve<Service>()
+                        };
+                    ServiceBase.Run(ServicesToRun);
+                }
+                else
+                {
+                    Service service = container.Resolve<Service>(); 
+                    service.Start();
+                    Thread.Sleep(30000);
+                }
+            }
         }
     }
 }

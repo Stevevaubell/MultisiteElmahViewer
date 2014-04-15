@@ -9,10 +9,9 @@ namespace Elmah.Service.IOC
 {
     public class IocSetup
     {
-        public void AddDependencies(IContainer context, string connectionString)
+        public ContainerBuilder AddDependencies(string connectionString)
         {
-            var builder = new Autofac.ContainerBuilder();
-
+            ContainerBuilder builder = new ContainerBuilder();
             SessionSetup sessionSetup = new SessionSetup(connectionString);
             var sessionFactory = sessionSetup.GetSessionFactory();
             builder.Register(s => s.Resolve<ISessionFactory>().OpenSession());
@@ -40,12 +39,11 @@ namespace Elmah.Service.IOC
                 .AsImplementedInterfaces()
                 .PropertiesAutowired();
 
-
-            builder.RegisterType<Service>();
+            builder.RegisterType<Service>().PropertiesAutowired();
 
             builder.RegisterInstance(sessionFactory);
 
-            builder.Update(context);
+            return builder;
         }
     }
 }
