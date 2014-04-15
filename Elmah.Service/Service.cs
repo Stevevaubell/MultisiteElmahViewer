@@ -43,7 +43,7 @@ namespace Elmah.Service
             try
             {
                 FindApplicationsTask.RunTask();
-                //CleanUpTask.RunTask();
+                CleanUpTask.RunTask();
             }
             catch (Exception error)
             {

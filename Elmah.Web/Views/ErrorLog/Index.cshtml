@@ -1,4 +1,7 @@
-﻿@model Elmah.Web.Models.ErrorLogViewModel
+﻿@using Elmah.Web.Builders.Impl
+@using PagedList
+@using PagedList.Mvc
+@model Elmah.Web.Models.ErrorLogViewModel
 
 @{
     ViewBag.Title = "Index";
@@ -9,23 +12,12 @@
 
 @if (Model.Errors != null && Model.Errors.Count > 0)
 {
-    if (Model.TotalPage > 1)
-    {
-        <div class="container">
-            Choose page: 
-            @for (int i = 1; i < Model.TotalPage + 1; i++)
-            {
-                if (i == Model.PageNumber)
-                {
-                    <span>@i</span>
-                }
-                else
-                {
-                    <a href="/ErrorLog/?application=@Model.ApplicationName&pageNumber=@i">@i</a>
-                }
-            }
-        </div>
-    }
+    var list = new List<int>();
+    list.AddRange(Enumerable.Range(1, Model.TotalPage * ErrorLogBuilder.ResultsPerPage));
+
+    <div style="padding-left: 50px;">
+            @Html.PagedListPager((IPagedList)list.ToPagedList(Model.PageNumber, ErrorLogBuilder.ResultsPerPage), page => Url.Action("index", new { application = Model.ApplicationName, pageNumber = page }))
+    </div>
     <table class="result-table">
         <tr class="row result-header">
             <th>
