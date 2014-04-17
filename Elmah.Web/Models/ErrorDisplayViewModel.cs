@@ -1,7 +1,5 @@
-﻿using System.IO;
+﻿using Elmah.Core.Models;
 using System.Text.RegularExpressions;
-using System.Web;
-using Elmah.Core.Models;
 
 namespace Elmah.Web.Models
 {

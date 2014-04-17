@@ -192,6 +192,8 @@
     <Compile Include="Models\HomeViewData.cs" />
     <Compile Include="Models\OriginalError.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Util\IConfigSettings.cs" />
+    <Compile Include="Util\Impl\ConfigSettings.cs" />
     <Compile Include="Util\Impl\ErrorXmlHelper.cs" />
     <Compile Include="Util\IErrorXmlHelper.cs" />
   </ItemGroup>
