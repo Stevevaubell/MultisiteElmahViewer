@@ -16,6 +16,7 @@ namespace Elmah.Web.Tests.Controllers.Api
         {
             _builder = new Mock<IApplicationStateApiBuilder>();
             _apiController = new ApplicationStateApiController();
+            _apiController.ApplicationStateApiBuilder = _builder.Object;
         }
 
         [Test]
