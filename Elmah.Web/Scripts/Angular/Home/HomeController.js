@@ -7,7 +7,7 @@ app.controller("HomeController", ['$scope', '$http', '$interval', function ($sco
             .success(function (data) {
                 $scope.states = data;
             }).error(function (err) {
-                console.log("get error : " + err.message);
+                console.log("get error : " + err.ExceptionMessage);
             });
     };
 
