@@ -8,6 +8,10 @@
     Layout = "~/Views/Shared/_LayoutPage.cshtml";
 }
 
+<div style="padding-left: 50px">
+    <a class="btn btn-primary" href="/">Go Back</a>
+</div>
+<br />
 <h1 style="padding-left: 50px">@Model.ApplicationName</h1>
 
 @if (Model.Errors != null && Model.Errors.Count > 0)
@@ -53,7 +57,7 @@
                     @error.Type.Split('.').Last().ToString()
                 </td>
                 <td>
-                    @error.Message.Substring(0, (error.Message.Length > 50 ? 50 : error.Message.Length))... <a href="/ErrorDisplay/?errorId=@error.Id">details</a>
+                    @error.Message.Substring(0, (error.Message.Length > 50 ? 50 : error.Message.Length))... <a class="btn btn-primary btn-xs" href="/ErrorDisplay/?errorId=@error.Id">details</a>
                 </td>
                 <td>
                     @userName
